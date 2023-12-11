@@ -1,0 +1,6 @@
+development:
+  api-url: 'https://api.vivino.com/vintages/_explore?limit=50&q=cabernet%20sauvignon'
+  assets-url: 'https://web-common.vivino.com/assets'
+test:
+  api-url: 'https://api.vivino.com/vintages/_explore?limit=50&q=cabernet%20sauvignon'
+  assets-url: 'https://web-common.vivino.com/assets'

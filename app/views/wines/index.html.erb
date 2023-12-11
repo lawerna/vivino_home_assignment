@@ -1,0 +1,13 @@
+<h1 class="mt-5">Here is a list of wines we are currently offer</h1>
+
+<div id="wines" class="mt-5">
+  <% @wines.each do |wine| %>
+    <div class="row">
+      <div class="card mb-5">
+        <div class="card-body">
+          <%= render partial: 'wines/wine', locals: { wine: wine } %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,38 @@
+<div class="row wine">
+  <div class="col-sm-2">
+    <%= image_tag("https://#{wine[:vintage][:image][:variations][:bottle_medium]}", class: "image-wrapper") %>
+  </div>
+
+  <div class="col-sm-10">
+    <div class="winery-name-font-size"><%= wine[:vintage][:wine][:winery][:name] %></div>
+
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="winery-font mb-2">
+          <%= "#{wine[:vintage][:wine][:name]} #{wine[:vintage][:year]}" %>
+        </div>
+
+        <div>
+          <%= image_tag(country_image_url(wine), class: "image-country") %>
+          <%= "#{wine[:vintage][:wine][:region][:name]}, #{IsoCountryCodes.find(country_code(wine)).name}" %>
+        </div>
+      </div>
+
+      <div class="col-sm-4 text-center">
+        <div class="rating"><%= ratings_average(wine) %></div>
+        <%- star_red_counter(wine).times do %>
+          <%= image_tag("#{Rails.application.config_for(:local_env)['assets-url']}/rating/star_10.svg", class: "rating-star star-red") %>
+        <%- end %>
+
+        <%- star_blank_counter(wine).times do %>
+          <%= image_tag("#{Rails.application.config_for(:local_env)['assets-url']}/rating/star_0.svg", class: "rating-star star-blank") %>
+        <%- end %>
+
+        <div>
+          <%= pluralize(wine[:vintage][:wine][:statistics][:ratings_count], 'rating') %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

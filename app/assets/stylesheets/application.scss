@@ -1,1 +1,33 @@
 @import "bootstrap";
+
+.wine {
+  height: 244px;
+
+  .image-wrapper {
+    height: 50%;
+    margin-top: -50px;
+  }
+
+  .winery-name-font-size {
+    font-size: 22px;
+  }
+
+  .winery-font {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .image-country {
+    width: 24px;
+    height: 24px;
+  }
+
+  .rating {
+    font-size: 40px;
+  }
+
+  .rating-star {
+    width: 16px;
+    height: 16px;
+  }
+}
