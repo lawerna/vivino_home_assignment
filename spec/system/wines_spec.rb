@@ -177,7 +177,6 @@ describe 'Wine page', type: :system do
       assert_text 'Denmark'
 
       find(:css, 'label[for="query_ar"]').set(true)
-      click_on 'Search'
 
       assert_selector 'h1', text: 'Here is a list of wines we are currently offer'
 

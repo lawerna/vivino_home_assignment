@@ -1,25 +1,29 @@
-<h1 class="mt-5">Here is a list of wines we are currently offer</h1>
+<div data-controller="wines">
+  <h1 class="mt-5">Here is a list of wines we are currently offer</h1>
 
-<%= form_with(url: wines_path, method: :get) do |form| %>
-  <div id="query">
-    <p>Search by country name</p>
-    <%- countries_for_filtering.each do |country, code| %>
-      <%= form.check_box :query, { multiple: true, class: "btn-check" }, code, false %>
-      <%= form.label :query, country, class: "btn btn-outline-danger", for: "query_#{code}" %>
-    <% end %>
+  <%= form_with(url: wines_path, method: :get) do |form| %>
+    <div id="query">
+      <p>Search by country name</p>
+      <%- countries_for_filtering.each do |country, code| %>
+        <%- checked = params['query'].present? ? (params['query'].include? code) : false %>
+        <%= form.check_box :query, { multiple: true, class: "btn-check", "data-action": "wines#refresh", checked: checked }, code, false %>
+        <%= form.label :query, country, class: "btn btn-outline-danger", for: "query_#{code}" %>
+      <% end %>
 
-    <%= form.submit 'Search', class: "btn btn-primary" %>
-  </div>
-<% end %>
-
-<div id="wines" class="mt-5">
-  <% @wines.each do |wine| %>
-    <div class="row">
-      <div class="card mb-5">
-        <div class="card-body">
-          <%= render partial: 'wines/wine', locals: { wine: wine } %>
-        </div>
-      </div>
+      <%= form.submit 'Search', class: "btn btn-primary", id: "query_submit" %>
     </div>
   <% end %>
+
+  <div id="wines" class="mt-5">
+    <% @wines.each do |wine| %>
+      <div class="row">
+        <div class="card mb-5">
+          <div class="card-body">
+            <%= render partial: 'wines/wine', locals: { wine: wine } %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
 </div>
