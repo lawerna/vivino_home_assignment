@@ -18,4 +18,8 @@ module WinesHelper
   def star_blank_counter(wine)
     (5 - star_red_counter(wine))
   end
+
+  def countries_for_filtering
+    [['Argentina', 'ar'], ['Australia', 'au'], ['Austria', 'at'], ['Chile', 'cl'], ['France', 'fr'], ['Germany', 'de'], ['Italy', 'it'], ['Portugal', 'pt'], ['South Africa', 'za'], ['Spain', 'es'], ['United States', 'us']]
+  end
 end
